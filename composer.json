@@ -1,0 +1,63 @@
+{
+    "name": "kuyoto/psr7",
+    "description": "Provides a PSR-7 compliant http message implementation.",
+    "keywords": [
+        "psr",
+        "psr-7",
+        "psr-17",
+        "http",
+        "factory",
+        "message"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tolulope Kuyoro",
+            "email": "nifskid1999@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.2",
+        "psr/http-factory": "^1.0",
+        "psr/http-message": "^1.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.16.3",
+        "http-interop/http-factory-tests": "dev-master",
+        "php-http/psr7-integration-tests": "dev-master",
+        "phpunit/phpunit": "^8.0"
+    },
+    "provide": {
+        "psr/http-factory-implementation": "1.0",
+        "psr/http-message-implementation": "1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kuyoto\\Psr7\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Kuyoto\\Psr7\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit --colors=always",
+        "test-ci": "vendor/bin/phpunit --colors=always --coverage-clover clover.xml"
+    },
+    "scripts-descriptions": {
+        "test": "Run all tests",
+        "test-ci": "Run test coverage"
+    },
+    "config": {
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    }
+}

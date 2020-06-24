@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="vendor/phpunit/phpunit/phpunit.xsd" backupGlobals="false" executionOrder="depends" verbose="true" colors="true" failOnRisky="true" failOnWarning="true" bootstrap="vendor/autoload.php">
+    <php>
+        <const name="REQUEST_FACTORY" value="Kuyoto\Psr7\Factory\RequestFactory"/>
+        <const name="RESPONSE_FACTORY" value="Kuyoto\Psr7\Factory\ResponseFactory"/>
+        <const name="SERVER_REQUEST_FACTORY" value="Kuyoto\Psr7\Factory\ServerRequestFactory"/>
+        <const name="STREAM_FACTORY" value="Kuyoto\Psr7\Factory\StreamFactory"/>
+        <const name="UPLOADED_FILE_FACTORY" value="Kuyoto\Psr7\Factory\UploadedFileFactory"/>
+        <const name="URI_FACTORY" value="Kuyoto\Psr7\Factory\UriFactory"/>
+    </php>
+
+    <testsuites>
+        <testsuite name="integration">
+            <directory>./tests/integration</directory>
+        </testsuite>
+
+        <testsuite name="unit">
+            <directory>./tests/unit</directory>
+            <directory>./vendor/http-interop/http-factory-tests/test</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src</directory>
+        </whitelist>
+    </filter>
+</phpunit>
