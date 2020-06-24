@@ -72,7 +72,7 @@ class Message implements MessageInterface
     public function __construct(array $headers = [], $body = null)
     {
         $this->setHeaders($headers);
-        $this->body = $this->getStream($body);
+        $this->body = Stream::create($body);
     }
 
     /**
@@ -212,31 +212,6 @@ class Message implements MessageInterface
         $clone->protocolVersion = $version;
 
         return $clone;
-    }
-
-    /**
-     * Returns the stream.
-     *
-     * @param null|resource|StreamInterface|string $body the body
-     *
-     * @throws \InvalidArgumentException on an invalid body
-     */
-    private function getStream($body): StreamInterface
-    {
-        $type = gettype($body);
-
-        switch (strtolower($type)) {
-            case 'resource':
-                return new Stream($body);
-            case 'object':
-                if ($body instanceof StreamInterface) {
-                    return $body;
-                }
-                // no-break
-                // no break
-            default:
-                return new Stream(fopen('php://temp', 'wb+'));
-        }
     }
 
     /**
