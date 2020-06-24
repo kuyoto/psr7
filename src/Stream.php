@@ -119,6 +119,34 @@ final class Stream implements StreamInterface
     }
 
     /**
+     * Creates a new PSR-7 stream.
+     *
+     * @param string|resource|null|StreamInterface $body the body
+     *
+     * @return StreamInterface
+     *
+     * @throws \InvalidArgumentException
+     */
+    public static function create($body = ''): StreamInterface
+    {
+        if ($body instanceof StreamInterface) {
+            return $body;
+        }
+
+        if (is_string($body) || $body === null) {
+            $resource = fopen('php://temp', 'rw+');
+            fwrite($resource, $body);
+            $body = $resource;
+        }
+
+        if (is_resource($body)) {
+            return new self($body);
+        }
+
+        throw new \InvalidArgumentException('First argument to Stream::create() must be a string, resource or StreamInterface.');
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function __toString()
