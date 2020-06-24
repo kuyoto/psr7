@@ -119,11 +119,29 @@ final class Stream implements StreamInterface
     }
 
     /**
+     * {@inheritdoc}
+     */
+    public function __toString()
+    {
+        if (!$this->isReadable()) {
+            return '';
+        }
+
+        try {
+            if ($this->isSeekable()) {
+                $this->rewind();
+            }
+
+            return $this->getContents();
+        } catch (\RuntimeException $e) {
+            return '';
+        }
+    }
+
+    /**
      * Creates a new PSR-7 stream.
      *
-     * @param string|resource|null|StreamInterface $body the body
-     *
-     * @return StreamInterface
+     * @param null|resource|StreamInterface|string $body the body
      *
      * @throws \InvalidArgumentException
      */
@@ -144,26 +162,6 @@ final class Stream implements StreamInterface
         }
 
         throw new \InvalidArgumentException('First argument to Stream::create() must be a string, resource or StreamInterface.');
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function __toString()
-    {
-        if (!$this->isReadable()) {
-            return '';
-        }
-
-        try {
-            if ($this->isSeekable()) {
-                $this->rewind();
-            }
-
-            return $this->getContents();
-        } catch (\RuntimeException $e) {
-            return '';
-        }
     }
 
     /**

@@ -66,8 +66,8 @@ class Message implements MessageInterface
     /**
      * Constructor.
      *
-     * @param array                         $headers the headers
-     * @param null|resource|StreamInterface $body    the body
+     * @param array                                $headers the headers
+     * @param null|resource|StreamInterface|string $body    the body
      */
     public function __construct(array $headers = [], $body = null)
     {
