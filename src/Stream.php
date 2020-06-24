@@ -135,7 +135,7 @@ final class Stream implements StreamInterface
 
         if (is_string($body) || $body === null) {
             $resource = fopen('php://temp', 'rw+');
-            fwrite($resource, $body);
+            fwrite($resource, (string) $body);
             $body = $resource;
         }
 
