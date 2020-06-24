@@ -1,5 +1,10 @@
 # PSR-7
 
+[![Build Status](https://travis-ci.com/kuyoto/psr7.svg?b=master)](https://travis-ci.com/kuyoto/psr7)
+[![Total Downloads](https://poser.pugx.org/kuyoto/psr7/downloads?format=flat)](https://packagist.org/packages/kuyoto/psr7)
+[![Latest Stable Version](https://poser.pugx.org/kuyoto/psr7/v/stable?format=flat)](https://packagist.org/packages/kuyoto/psr7)
+[![License](https://poser.pugx.org/kuyoto/psr7/license?format=flat)](https://packagist.org/packages/kuyoto/psr7)
+
 This package provides a [PSR-7](http://www.php-fig.org/psr/psr-7/) complaint http message implementation.
 
 ## Installation
