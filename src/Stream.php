@@ -123,17 +123,13 @@ final class Stream implements StreamInterface
      */
     public function __toString()
     {
-        if (!$this->isReadable()) {
-            return '';
-        }
-
         try {
             if ($this->isSeekable()) {
                 $this->rewind();
             }
 
             return $this->getContents();
-        } catch (\RuntimeException $e) {
+        } catch (\Throwable $e) {
             return '';
         }
     }
@@ -203,7 +199,7 @@ final class Stream implements StreamInterface
      */
     public function getContents()
     {
-        if (!$this->isReadable()) {
+        if (!isset($this->body)) {
             throw new \RuntimeException('Unable to read stream contents');
         }
 
